@@ -1,6 +1,6 @@
 # Postlyra MCP
 
-**Hosted MCP 0.3.3: post cards inside AI chats.** The endpoint exposes 32 tools. Actual desktop ChatGPT OAuth, card rendering, Refresh and planning-form navigation are verified; source edits and delivery through the ChatGPT UI remain separate checks. The initial implementation passed 776 tests; the compatibility fix passed 49 focused tests and typecheck/build. See the [card guide](docs/chat-card.md) and [client evidence](docs/compatibility.md). The Registry entry remains `0.2.0-rc.1`; OpenAI directory approval is not claimed.
+**Hosted MCP 0.3.3: post cards inside AI chats.** The endpoint exposes 32 tools. Actual desktop ChatGPT OAuth, card rendering, Refresh and planning-form navigation are verified; source edits and delivery through the ChatGPT UI remain separate checks. The initial implementation passed 776 tests; the compatibility fix passed 50 focused tests and typecheck/build. See the [card guide](docs/chat-card.md) and [client evidence](docs/compatibility.md). The Registry entry remains `0.2.0-rc.1`; OpenAI directory approval is not claimed.
 
 [Русский](README.ru.md) · [Website](https://postlyra.app/en) · [Connection guide](https://postlyra.app/en/connect)
 

@@ -1,6 +1,6 @@
 # Postlyra MCP
 
-**Hosted MCP 0.3.4: post cards inside AI chats.** The endpoint exposes 32 tools. Desktop ChatGPT completed draft/card edits, browser source continuity, scheduling/moving/canceling, timed channel delivery and selected-message edit/delete with developer CSP enforcement enabled. The 804-test suite, typecheck/build and documentation checks passed. Group acceptance is blocked by a client safety review; remaining clients/devices are listed in [client evidence](docs/compatibility.md). See the [card guide](docs/chat-card.md). Registry version remains `0.2.0-rc.1`; OpenAI directory approval is not claimed.
+**Hosted MCP 0.3.5: post cards inside AI chats.** The endpoint exposes 32 tools. Desktop ChatGPT completed draft/card edits, browser source continuity, scheduling/moving/canceling, timed channel delivery and selected-message edit/delete with developer CSP enforcement enabled. The 804-test suite, typecheck/build and documentation checks passed. Group acceptance is blocked by a client safety review; remaining clients/devices are listed in [client evidence](docs/compatibility.md). See the [card guide](docs/chat-card.md). Registry version remains `0.2.0-rc.1`; OpenAI directory approval is not claimed.
 
 [Русский](README.ru.md) · [Website](https://postlyra.app/en) · [Connection guide](https://postlyra.app/en/connect)
 

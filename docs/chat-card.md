@@ -4,7 +4,7 @@
 
 ## English
 
-Postlyra's hosted MCP server `0.3.3` adds an optional MCP Apps card. In a compatible host, ask: **“Find my music post and show its Postlyra card.”** The client finds or creates a saved source, then calls `show_post_card` with its `postId`.
+Postlyra's hosted MCP server `0.3.4` adds an optional MCP Apps card. In a compatible host, ask: **“Find my music post and show its Postlyra card.”** The client finds or creates a saved source, then calls `show_post_card` with its `postId`.
 
 The card previews the saved content and attribution, lets you edit plain text, select a connected channel or group and an exact date/time, and schedule, move or cancel one publication. Rich content can be edited through the normal chat tools or the full editor. Saving a source does not change scheduled or sent snapshots. Opening the card does not publish anything or create a public preview link.
 
@@ -18,7 +18,7 @@ If a scheduling response is lost, use **Check result** or retry the frozen reque
 
 ## Russian
 
-В MCP Postlyra `0.3.3` появилась необязательная карточка для клиентов с поддержкой MCP Apps. Попросите ИИ: **«Найди мой пост про музыку и покажи его карточку Postlyra»**. Клиент находит или создаёт исходный пост, затем вызывает `show_post_card` с его `postId`.
+В MCP Postlyra `0.3.4` появилась необязательная карточка для клиентов с поддержкой MCP Apps. Попросите ИИ: **«Найди мой пост про музыку и покажи его карточку Postlyra»**. Клиент находит или создаёт исходный пост, затем вызывает `show_post_card` с его `postId`.
 
 В карточке можно просмотреть содержимое и подпись, изменить обычный текст, выбрать подключённый канал или группу, точные дату и время, запланировать, перенести или отменить одну публикацию. Сложное оформление редактируется через инструменты в чате или полный редактор. Сохранение исходника не меняет уже запланированные и отправленные версии. Открытие карточки ничего не публикует и не создаёт публичную ссылку.
 
@@ -32,16 +32,12 @@ If a scheduling response is lost, use **Check result** or retry the frozen reque
 
 ## Verification / Проверки
 
-Card hydration tolerates hosts that omit null object fields while retaining required identity, revision and permission checks. Saved-chat replay and fresh SDK actions use the same validated card contract.
+On September 12, 2026, desktop ChatGPT completed one disposable channel lifecycle: create a draft, show/edit its card, find the same source in the browser, schedule/move/cancel, deliver once at the selected time, save a new working revision without changing the sent snapshot, explicitly apply it to that selected message, delete the message and archive the source. Actual Telegram Web and read-only delivery records confirmed the result and cleanup. Developer CSP enforcement was enabled. This live flow ran on 0.3.3/v3; 0.3.4/v4 adds the fixes below.
 
-Карточка учитывает, что клиент может опускать пустые поля ответа. Идентификаторы, ревизии и права по-прежнему обязательны; это проверено и при открытии истории, и при обновлении данных.
+Release 0.3.4 keeps canceled/deleted deliveries from marking a source as failed, permits editing the bot's own tracked group messages without a channel-only admin flag, and shows useful labels/links for external or unavailable media. The local harness checked RU/light at 390 px and EN/dark at 320 px. The full suite passed 804 tests; types and build passed. Source ownership, revisions, granted permissions and delivery idempotency remain enforced. Old UI URIs remain explicit compatibility aliases, and old OAuth grants gain no scopes automatically.
 
-On 2026-09-11, production server `0.3.3` returned 32 tools and the v3 UI resource; its SHA-256 matched the tested local build. Protected reads returned 401 without authorization and all seven readiness checks passed. The final suite passed 798 tests, including 58 focused compatibility tests and typecheck/build.
+В ChatGPT проверен полный ограниченный сценарий в выделенном канале: создание, правка, планирование, перенос, отмена, доставка по времени, изменение выбранного сообщения и удаление теста. Тот же исходник доступен в браузере. В версии 0.3.4 отменённая доставка не превращает пост в ошибочный; недоступное или внешнее медиа отображается понятным блоком со ссылкой. Проверка CSP в ChatGPT включена.
 
-On 2026-09-11 the owner approved a new dynamically registered ChatGPT connection with all ten current scopes through the normal consent page. The older five-scope grant was preserved. ChatGPT settings Refresh loaded all 32 tools and the UI resource. Actual desktop Chrome rendering passed for both reopening a saved conversation and a fresh show_post_card invocation. The card displayed the existing rich post, attribution, current quota and scheduling controls. Its Refresh button completed a real get_post call. The recipient started unselected and the form showed Asia/Bangkok. These checks did not edit the source, create a job or send a Telegram message.
+A designated test-group send was blocked by OpenAI automatic safety review before reaching Postlyra and was not retried through another route. Real group, mobile, remaining vendor clients and hosted portal Scan Tools remain separate gates. No public OpenAI submission or directory approval is claimed. Publisher identity verification is required before creating the portal draft.
 
-В настоящем ChatGPT в Chrome проверены обычная OAuth-авторизация, обновление списка инструментов, открытие карточки из истории и новым запросом, чтение актуальных данных кнопкой «Обновить» и открытие формы планирования. Получатель изначально не выбран; часовой пояс — Asia/Bangkok. Пост не изменялся, публикации не создавались.
-
-ChatGPT write operations, mobile clients, other vendors' MCP Apps UIs and OpenAI review remain separate acceptance gates. The account's existing "Enforce CSP in developer mode" switch was off and was not changed; no hosted CSP/Scan Tools approval is claimed. External media outside the declared app/storage origins appears as an explicit link. Local harness screenshots are not ChatGPT screenshots. No public OpenAI submission or directory approval is claimed.
-
-Изображения с внешних сайтов за пределами разрешённых хранилищ открываются по ссылкам. Запись и публикация через интерфейс ChatGPT, мобильные приложения и интерфейсы других производителей пока не проверены. Локальные проверки планирования не заменяют эти этапы; публикация функции не означает одобрение каталога OpenAI. См. [Registry](release.md) и [совместимость](compatibility.md).
+Отправку в тестовую группу остановила автоматическая проверка OpenAI до выполнения Postlyra. Группа, мобильные устройства, остальные ИИ-клиенты и проверка в портале OpenAI пока не подтверждены. Внешние изображения вне разрешённых хранилищ открываются по явной ссылке. Локальный стенд не заменяет настоящий ChatGPT. См. [Registry](release.md) и [совместимость](compatibility.md).

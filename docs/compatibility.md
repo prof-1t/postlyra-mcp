@@ -1,5 +1,7 @@
 # Compatibility evidence
 
+Updated September 12, 2026: desktop ChatGPT completed draft creation, in-chat card edits, browser source continuity, schedule/move/cancel, one timed channel delivery, selected-message edit/delete and source archival on server 0.3.3/v3. Developer CSP enforcement was enabled. A designated group send was blocked by OpenAI automatic safety review before server execution and was not retried; group acceptance remains unverified. Deployed 0.3.4/v4 adds terminal-job status and own-group-message permission fixes plus explicit external/broken-media fallback. These local fixes do not establish live group acceptance.
+
 Updated: 2026-09-11. The historical content release **0.2.0-rc.1** supplies the delivery/Registry evidence below. Hosted MCP Apps server **0.3.3** adds verified desktop ChatGPT viewing and refresh, documented in the [card guide](chat-card.md). Public metadata, browser sign-in, read-only UI operation and complete publication workflows are distinct checks.
 
 ## Confirmed public checks for the content release
@@ -24,11 +26,11 @@ One owner-designated test channel passed the bounded Codex connector publication
 
 ## Client acceptance matrix
 
-Local inventory was read-only: executable lookup, selected standard installation paths and Windows package/uninstall metadata. Missing from these checks does not mean a client is absent from every possible location. That inventory did not open authentication or run a model. The subsequent ChatGPT web check below used normal owner-approved OAuth and real read-only tool calls.
+Local inventory was read-only: executable lookup, selected standard installation paths and Windows package/uninstall metadata. Missing from these checks does not mean a client is absent from every possible location. That inventory did not open authentication or run a model. The subsequent ChatGPT web checks used normal owner-approved OAuth, card actions and a bounded live channel lifecycle.
 
 | Client | Locally observed | Setup / observed operations | OAuth + draft + schedule + targeted edit |
 | --- | --- | --- | --- |
-| ChatGPT | Desktop Chrome web, developer mode | Normal owner-approved dynamic OAuth; Refresh loaded 32 tools. Saved and fresh cards rendered, Refresh read the source, and the planning form showed unselected recipients and the account time zone | OAuth + viewing/refresh PASS; editing, scheduling and targeted edits inside ChatGPT NOT RUN |
+| ChatGPT | Desktop Chrome web, developer mode | Normal owner-approved dynamic OAuth, 32 tools, card edits and browser source continuity; developer CSP enabled | PASS for observed channel schedule/move/cancel, timed delivery and selected-message edit/delete. Group blocked by client safety review; mobile NOT RUN |
 | Claude | Desktop Windows package `1.40609.0.0` installed; not launched | Account-based remote-connector instructions reviewed; desktop app presence is not connector verification | NOT RUN for this release |
 | Claude Code | `claude` CLI not found on PATH or inspected standard install paths | HTTP command and project `.mcp.json` shape match official documentation | NOT RUN for this release |
 | Codex | CLI `0.153.4`; Windows app package `26.903.9818.0` | Installed app connector: auth, formatting, shared test-draft search, preview and connected-channel publication PASS. Direct CLI: config parsed without persistence; bearer launcher rejected before process creation | Connector publication PASS; subsequent selected edits/deletion and scheduling verified via SDK, not this connector. Native direct-MCP CLI OAuth NOT RUN |

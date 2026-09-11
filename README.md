@@ -1,6 +1,6 @@
 # Postlyra MCP
 
-**0.2 release candidate (`0.2.0-rc.1`).** The expanded content toolset is pending deployment and live-client verification. The production endpoint may still expose the previous core tools. Scheduling, publication management and portable media examples below describe the release candidate; inspect the server's actual tool list before using them. None of the five documented clients is claimed to have passed the full release workflow.
+**0.2 release candidate (`0.2.0-rc.1`).** The expanded content toolset is deployed and its MCP Registry entry is published. Public discovery returned 31 tools and the endpoint diagnostics passed on September 11, 2026. Telegram browser OIDC setup is in progress; end-to-end OAuth and the full workflows in all five documented clients remain unverified. See the [verification record](docs/compatibility.md).
 
 [Русский](README.ru.md) · [Website](https://postlyra.app/en) · [Connection guide](https://postlyra.app/en/connect)
 
@@ -67,7 +67,7 @@ This makes read-only checks of public metadata and unauthenticated MCP discovery
 
 ## Distribution status
 
-[server.json](server.json) is prepared for the MCP Registry. No Registry listing or OpenAI submission is claimed for this release candidate. Publishing this integration repository does not deploy the SaaS backend or verify client compatibility. See [release checklist](docs/release.md).
+[server.json](server.json) is published as [io.github.prof-1t/postlyra-mcp, version 0.2.0-rc.1](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.prof-1t%2Fpostlyra-mcp/versions/0.2.0-rc.1). The official Registry API confirmed an active entry on September 11, 2026. The production endpoint also exposes the expanded tool metadata. Registry publication does not establish client compatibility or OpenAI catalog approval; no OpenAI submission is claimed. See the [release record](docs/release.md).
 
 ## Support
 

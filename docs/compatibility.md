@@ -1,8 +1,8 @@
 # Compatibility evidence
 
-Updated: 2026-09-11 for **0.2.0-rc.1**. The expanded content toolset is deployed, Registry publication is confirmed and Telegram browser OIDC sign-in succeeded in Chrome. **Public metadata verified**, **browser sign-in verified** and **setup documented** are distinct from **AI-client workflow verified**.
+Updated: 2026-09-11. The historical content release **0.2.0-rc.1** supplies the delivery/Registry evidence below. Hosted MCP Apps server **0.3.3** adds verified desktop ChatGPT viewing and refresh, documented in the [card guide](chat-card.md). Public metadata, browser sign-in, read-only UI operation and complete publication workflows are distinct checks.
 
-## Confirmed public checks
+## Confirmed public checks for the content release
 
 - The production MCP endpoint returned 31 public tool definitions.
 - `node scripts/diagnose.mjs` passed: protected-resource metadata, authorization-server metadata and public tool discovery each returned HTTP 200; `contentWorkspaceAvailable` was true.
@@ -24,11 +24,11 @@ One owner-designated test channel passed the bounded Codex connector publication
 
 ## Client acceptance matrix
 
-Local inventory was read-only: executable lookup, selected standard installation paths and Windows package/uninstall metadata. Missing from these checks does not mean a client is absent from every possible location. No browser or authentication flow was opened, account settings/keys/subscriptions were not changed, and no AI model run was started.
+Local inventory was read-only: executable lookup, selected standard installation paths and Windows package/uninstall metadata. Missing from these checks does not mean a client is absent from every possible location. That inventory did not open authentication or run a model. The subsequent ChatGPT web check below used normal owner-approved OAuth and real read-only tool calls.
 
 | Client | Locally observed | Setup / observed operations | OAuth + draft + schedule + targeted edit |
 | --- | --- | --- | --- |
-| ChatGPT | Native app not found in inspected Windows installations; web access not inspected | Current official custom-connection instructions reviewed | NOT RUN for this release |
+| ChatGPT | Desktop Chrome web, developer mode | Normal owner-approved dynamic OAuth; Refresh loaded 32 tools. Saved and fresh cards rendered, Refresh read the source, and the planning form showed unselected recipients and the account time zone | OAuth + viewing/refresh PASS; editing, scheduling and targeted edits inside ChatGPT NOT RUN |
 | Claude | Desktop Windows package `1.40609.0.0` installed; not launched | Account-based remote-connector instructions reviewed; desktop app presence is not connector verification | NOT RUN for this release |
 | Claude Code | `claude` CLI not found on PATH or inspected standard install paths | HTTP command and project `.mcp.json` shape match official documentation | NOT RUN for this release |
 | Codex | CLI `0.153.4`; Windows app package `26.903.9818.0` | Installed app connector: auth, formatting, shared test-draft search, preview and connected-channel publication PASS. Direct CLI: config parsed without persistence; bearer launcher rejected before process creation | Connector publication PASS; subsequent selected edits/deletion and scheduling verified via SDK, not this connector. Native direct-MCP CLI OAuth NOT RUN |

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.prof-1t/postlyra-mcp",
+  "title": "Postlyra",
+  "description": "Manage Telegram drafts, media, schedules and publications from AI clients.",
+  "version": "0.2.0-rc.1",
+  "websiteUrl": "https://postlyra.app",
+  "repository": {
+    "url": "https://github.com/prof-1t/postlyra-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://postlyra.app/mcp"
+    }
+  ]
+}

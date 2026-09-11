@@ -32,7 +32,11 @@ If a scheduling response is lost, use **Check result** or retry the frozen reque
 
 ## Verification / Проверки
 
-On 2026-09-11, production server `0.3.3` returned 32 tools and the v3 UI resource; its SHA-256 matched the tested local build. Protected reads returned 401 without authorization and all seven readiness checks passed. The initial implementation passed 776 tests; the final compatibility patch passed 50 focused tests and typecheck/build.
+Card hydration tolerates hosts that omit null object fields while retaining required identity, revision and permission checks. Saved-chat replay and fresh SDK actions use the same validated card contract.
+
+Карточка учитывает, что клиент может опускать пустые поля ответа. Идентификаторы, ревизии и права по-прежнему обязательны; это проверено и при открытии истории, и при обновлении данных.
+
+On 2026-09-11, production server `0.3.3` returned 32 tools and the v3 UI resource; its SHA-256 matched the tested local build. Protected reads returned 401 without authorization and all seven readiness checks passed. The final suite passed 798 tests, including 58 focused compatibility tests and typecheck/build.
 
 On 2026-09-11 the owner approved a new dynamically registered ChatGPT connection with all ten current scopes through the normal consent page. The older five-scope grant was preserved. ChatGPT settings Refresh loaded all 32 tools and the UI resource. Actual desktop Chrome rendering passed for both reopening a saved conversation and a fresh show_post_card invocation. The card displayed the existing rich post, attribution, current quota and scheduling controls. Its Refresh button completed a real get_post call. The recipient started unselected and the form showed Asia/Bangkok. These checks did not edit the source, create a job or send a Telegram message.
 

@@ -1,6 +1,6 @@
 # Postlyra MCP
 
-**0.2 release candidate (`0.2.0-rc.1`).** The expanded content toolset is deployed and its MCP Registry entry is published. Public discovery returned 31 tools and the endpoint diagnostics passed on September 11, 2026. Telegram browser OIDC setup is in progress; end-to-end OAuth and the full workflows in all five documented clients remain unverified. See the [verification record](docs/compatibility.md).
+**0.2 release candidate (`0.2.0-rc.1`).** Deployed and listed in MCP Registry, with 31 tools and 765 passing tests. On September 11, 2026, Telegram browser sign-in, SDK OAuth/refresh/revocation, Codex connector publication, selected-message operations, scheduling/worker delivery and Telegram Desktop native/inline sends passed the observed checks. Test cleanup and usage reconciliation passed. Other clients, devices and OpenAI review remain separate gates. See the [verification record](docs/compatibility.md).
 
 [Русский](README.ru.md) · [Website](https://postlyra.app/en) · [Connection guide](https://postlyra.app/en/connect)
 
@@ -23,19 +23,23 @@ Save Telegram drafts, schedule publications and manage your content from an AI c
 claude mcp add --transport http --scope user postlyra https://postlyra.app/mcp
 ```
 
-Open `/mcp` and authenticate Postlyra. Alternatively merge [claude-code.json](clients/claude-code.json) into your MCP configuration without replacing other servers.
+Open `/mcp` and authenticate Postlyra. Alternatively merge [claude-code.json](clients/claude-code.json) into the project's `.mcp.json` without replacing other servers. This is a Claude Code configuration, not a Claude Desktop remote-connector configuration. [Official Claude Code instructions](https://code.claude.com/docs/en/mcp).
 
 ### Codex
 
-Merge [codex.toml](clients/codex.toml) into your Codex configuration. Complete the MCP OAuth sign-in flow.
+Merge [codex.toml](clients/codex.toml) into your Codex `config.toml`, preserving the existing configuration. Then run `codex mcp login postlyra` to start the separate MCP OAuth flow. [Official Codex instructions](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
 
 ### Cursor
 
-Merge [cursor.json](clients/cursor.json) into your MCP configuration. Open the server settings and complete OAuth.
+Merge [cursor.json](clients/cursor.json) into project `.cursor/mcp.json` or your global Cursor MCP configuration. Open the server settings and complete OAuth. [Official Cursor instructions](https://prod.cursor.com/docs/mcp).
 
-### ChatGPT and Claude
+### ChatGPT
 
-Add a custom remote MCP connection in the client's apps/integrations settings, using the endpoint above. Account, plan, organization policy and client version can affect custom-server availability. These instructions do not claim catalog approval or support on every account.
+Enable Developer mode under **Settings → Security and login**, then open **Plugins**, select the plus button and add the public MCP URL. Review the discovered tools and complete Postlyra authorization. Account and workspace policy can affect availability. This describes a custom developer connection, not an approved catalog listing. [Official OpenAI instructions](https://developers.openai.com/plugins/deploy/connect-chatgpt).
+
+### Claude
+
+Open **Customize → Connectors → Add custom connector**, enter the public MCP URL and select **Connect** to authorize Postlyra. Team/Enterprise owners may need to add the connector for their organization first. Claude's remote connection originates from Anthropic's infrastructure, including when using Claude Desktop; use the account connector interface rather than the local desktop-extension configuration. [Official Claude instructions](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 
 ## Example requests
 
@@ -51,7 +55,7 @@ Read [permissions](docs/permissions.md), [media transfer](docs/media.md), [troub
 
 ## Free Beta
 
-5 channels/groups, 30 publications per day, 300 per 30-day period and 1 GB of media. One delivery to one chat counts as one publication. Technical delivery retries are not additional publications. Publications include mandatory Postlyra attribution. AI-client subscriptions are separate.
+5 channels/groups, 30 publications per day, 300 per 30-day period and 1 GB of media. For server-managed connected publications, one known target counts as one publication; technical retries are not additional publications. Native/inline flows use temporary holds and the confirmations available from Telegram, so exact recipient counting is not guaranteed. See [confirmation limits](docs/compatibility.md#telegram-confirmation-and-usage-limits). Publications include mandatory Postlyra attribution. AI-client subscriptions are separate.
 
 Drafts and publications are distinct. Saving content does not automatically edit sent messages. Native/inline Telegram shares may lack identifiers required for later message management; the original Postlyra draft remains editable.
 

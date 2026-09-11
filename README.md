@@ -1,6 +1,6 @@
 # Postlyra MCP
 
-**0.2 release candidate (`0.2.0-rc.1`).** Deployed and listed in MCP Registry, with 31 tools and 765 passing tests. On September 11, 2026, Telegram browser sign-in, SDK OAuth/refresh/revocation, Codex connector publication, selected-message operations, scheduling/worker delivery and Telegram Desktop native/inline sends passed the observed checks. Test cleanup and usage reconciliation passed. Other clients, devices and OpenAI review remain separate gates. See the [verification record](docs/compatibility.md).
+**Hosted MCP 0.3.0: optional post card inside AI chats.** The endpoint exposes 32 tools; 776 tests and public SDK/resource checks passed on September 11, 2026. Preview, working edits and schedule controls were checked in a local MCP Apps host. Actual ChatGPT UI and other vendors' UI implementations remain unverified. See the [card guide](docs/chat-card.md) and [earlier content-workspace verification](docs/compatibility.md). The existing Registry entry remains `0.2.0-rc.1`; it does not imply OpenAI approval.
 
 [Русский](README.ru.md) · [Website](https://postlyra.app/en) · [Connection guide](https://postlyra.app/en/connect)
 
@@ -45,6 +45,7 @@ Open **Customize → Connectors → Add custom connector**, enter the public MCP
 
 - “Save this text as a Postlyra draft titled Weekly recap.”
 - “Find my draft about the autumn launch and show it.”
+- “Find my music post and show its Postlyra card.”
 - “Schedule this post in my connected channel for September 22, 2026 at 10:00 Europe/Moscow.”
 - “Move that publication to September 23 at the same local time.”
 - “Apply the current version only to the publication in my news channel.”

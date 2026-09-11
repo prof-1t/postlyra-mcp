@@ -1,8 +1,12 @@
-# Release record: 0.2.0-rc.1
+# Release records
 
 The public integration repository is [prof-1t/postlyra-mcp](https://github.com/prof-1t/postlyra-mcp). The service remains a release candidate. The private SaaS backend is deployed; publishing metadata does not establish client compatibility.
 
-## Confirmed on September 11, 2026
+## Hosted MCP 0.3.0: optional card
+
+Deployed on September 11, 2026 at 16:21 UTC. Public discovery exposes 32 tools including `show_post_card`; the static MCP Apps resource matches the tested local build. The implementation passed 776 tests, typecheck and build. A local SDK/AppBridge host exercised card actions, including recovery of a lost scheduling response. Actual ChatGPT and other vendors' UI implementations remain unverified. The endpoint and existing Registry manifest are unchanged. See the [card guide](chat-card.md).
+
+## Content workspace 0.2.0-rc.1: confirmed on September 11, 2026
 
 | Item | Evidence |
 | --- | --- |

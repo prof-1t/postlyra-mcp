@@ -1,16 +1,18 @@
 # Postlyra MCP
 
-**MCP 0.3.5: карточка поста внутри ИИ-чата.** Сервер предоставляет 32 инструмента. В ChatGPT проверены правки черновика в карточке, тот же пост в браузере, планирование, перенос, отмена, доставка в канал по времени и изменение/удаление выбранного сообщения. Проверка CSP включена. Все 804 теста, проверка типов, сборка и ссылки документации прошли. Проверку группы остановила автоматическая проверка клиента; остальные ограничения указаны в [таблице совместимости](docs/compatibility.md). См. [инструкцию карточки](docs/chat-card.md). Версия MCP Registry остаётся `0.2.0-rc.1`; одобрение каталога OpenAI не заявляется.
+**Postlyra.app — посты в Telegram из ИИ-чата.** Создавайте оформленные черновики, проверяйте предпросмотр и публикуйте в выбранный подключённый канал сейчас или по расписанию. Для ChatGPT [установите Postlyra из опубликованного каталога плагинов](https://chatgpt.com/plugins/plugin_asdk_app_6aa661b9f69c81919d9108aae8f09364); для совместимых клиентов используйте удалённый MCP.
 
-[English](README.md) · [Сайт](https://postlyra.app/ru) · [Подключение](https://postlyra.app/ru/connect)
+[English](README.md) · [Сайт](https://postlyra.app/ru?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_ru) · [Подключение](https://postlyra.app/ru/connect?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_ru)
 
 Postlyra связывает ИИ-чаты с Telegram: сохраняйте черновики, планируйте публикации, находите и редактируйте контент. Этот репозиторий содержит инструкции, конфигурации и диагностику интеграции. Сам сервис работает в облаке; исходный код SaaS остаётся закрытым. Токен Telegram-бота и локальный MCP-сервер не нужны.
+
+**Свидетельства совместимости выпуска MCP 0.3.5.** Сервер предоставляет 32 инструмента. В ChatGPT проверены правки черновика в карточке, тот же пост в браузере, планирование, перенос, отмена, доставка в канал по времени и изменение/удаление выбранного сообщения. Проверка CSP включена. Все 804 теста, проверка типов, сборка и ссылки документации прошли. Проверку группы остановила автоматическая проверка клиента; остальные ограничения указаны в [таблице совместимости](docs/compatibility.md). См. [инструкцию карточки](docs/chat-card.md). Версия MCP Registry остаётся `0.2.0-rc.1`.
 
 ## Быстрый старт
 
 1. Откройте [Postlyra](https://postlyra.app/app) и войдите через Telegram.
 2. Добавьте канал или группу в «Подключениях» и предоставьте @PostlyraBot необходимые права.
-3. Добавьте **https://postlyra.app/mcp** в клиент с поддержкой удалённого MCP (Streamable HTTP).
+3. В ChatGPT установите Postlyra из каталога плагинов. Для других клиентов с поддержкой удалённого MCP (Streamable HTTP) добавьте **https://postlyra.app/mcp**.
 4. Пройдите OAuth, проверьте разрешения, попросите показать каналы и сохранить тестовый черновик.
 
 В Claude Code:
@@ -21,7 +23,7 @@ claude mcp add --transport http --scope user postlyra https://postlyra.app/mcp
 
 Затем откройте `/mcp` и завершите вход. Готовые примеры: [Claude Code](clients/claude-code.json) для проектного `.mcp.json`, [Codex](clients/codex.toml) для `config.toml`, [Cursor](clients/cursor.json) для `.cursor/mcp.json`. Добавляйте секцию Postlyra, сохраняя остальные подключения. В Codex вход запускается отдельно командой `codex mcp login postlyra`.
 
-В ChatGPT включите Developer mode в **Settings → Security and login**, затем откройте **Plugins**, нажмите плюс и добавьте публичный MCP URL. Проверьте найденные инструменты и завершите авторизацию Postlyra. Это собственное подключение для тестирования, а не одобренная карточка каталога. [Официальная инструкция OpenAI](https://developers.openai.com/plugins/deploy/connect-chatgpt).
+В ChatGPT [откройте Postlyra в каталоге плагинов](https://chatgpt.com/plugins/plugin_asdk_app_6aa661b9f69c81919d9108aae8f09364) и установите плагин. Подключите аккаунт Postlyra через OAuth, войдите с Telegram и проверьте запрошенные разрешения. Попросите показать подключённые каналы, сохранить черновик и его предпросмотр. После проверки явно назовите канал и разрешите публикацию; для расписания укажите дату, время и часовой пояс. Доступность зависит от аккаунта и политики рабочего пространства. Основной путь установки — опубликованный плагин; Developer mode для него не нужен.
 
 В Claude откройте **Customize → Connectors → Add custom connector**, добавьте MCP URL и нажмите **Connect**. Для Team/Enterprise предварительная настройка может потребоваться от владельца организации. Удалённые подключения Claude Desktop также работают через аккаунт Claude и инфраструктуру Anthropic: файл для Claude Code не заменяет этот сценарий. [Официальная инструкция Claude](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 
@@ -31,7 +33,7 @@ claude mcp add --transport http --scope user postlyra https://postlyra.app/mcp
 
 - «Сохрани этот текст черновиком “Итоги недели” в Postlyra».
 - «Найди черновик про осенний запуск и покажи его».
-- «Запланируй пост на 22 сентября 2026 в 10:00 Europe/Moscow в мой подключённый канал».
+- «Запланируй пост на 22 октября 2026 в 10:00 Europe/Moscow в мой подключённый канал».
 - «Перенеси эту публикацию на следующий день».
 - «Примени текущие правки только к публикации в новостном канале».
 - «Отмени запланированную публикацию».
@@ -51,4 +53,11 @@ claude mcp add --transport http --scope user postlyra https://postlyra.app/mcp
 
 ## Публикация интеграции
 
-В официальном MCP Registry опубликована [io.github.prof-1t/postlyra-mcp, версия 0.2.0-rc.1](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.prof-1t%2Fpostlyra-mcp/versions/0.2.0-rc.1). 11 сентября 2026 года Registry API подтвердил активную запись, а production endpoint вернул метаданные нового набора инструментов. Регистрация не означает проверку ИИ-клиентов или одобрение каталога OpenAI; отправка заявки в OpenAI не заявляется. Подробности — в [записи о выпуске](docs/release.md).
+В официальном MCP Registry опубликована [io.github.prof-1t/postlyra-mcp, версия 0.2.0-rc.1](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.prof-1t%2Fpostlyra-mcp/versions/0.2.0-rc.1). 11 сентября 2026 года Registry API подтвердил активную запись, а production endpoint вернул метаданные нового набора инструментов. Postlyra также [опубликована в каталоге плагинов ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6aa661b9f69c81919d9108aae8f09364). MCP Registry и каталог ChatGPT — отдельные каналы распространения; наличие записи не означает независимую живую проверку всех ИИ-клиентов. Подробности — в [записи о выпуске](docs/release.md).
+
+## Полезные инструкции
+
+- Telegram MCP сервер: [Русский](https://postlyra.app/ru/guides/telegram-mcp?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_ru) · [English](https://postlyra.app/en/guides/telegram-mcp?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_en).
+- Публикация в Telegram из Claude: [Русский](https://postlyra.app/ru/guides/publish-from-claude?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_ru) · [English](https://postlyra.app/en/guides/publish-from-claude?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_en).
+- Редактируемые таблицы в Telegram: [Русский](https://postlyra.app/ru/guides/tablicy-v-telegram?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_ru) · [English](https://postlyra.app/en/guides/create-tables-in-telegram?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_en).
+

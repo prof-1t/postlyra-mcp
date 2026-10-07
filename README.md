@@ -1,10 +1,12 @@
 # Postlyra MCP
 
-**Hosted MCP 0.3.5: post cards inside AI chats.** The endpoint exposes 32 tools. Desktop ChatGPT completed draft/card edits, browser source continuity, scheduling/moving/canceling, timed channel delivery and selected-message edit/delete with developer CSP enforcement enabled. The 804-test suite, typecheck/build and documentation checks passed. Group acceptance is blocked by a client safety review; remaining clients/devices are listed in [client evidence](docs/compatibility.md). See the [card guide](docs/chat-card.md). Registry version remains `0.2.0-rc.1`; OpenAI directory approval is not claimed.
+**Postlyra.app connects AI chats to Telegram publishing.** Create structured drafts, review previews and publish to a named connected channel now or on a schedule. For ChatGPT, [install Postlyra from the published plugin directory](https://chatgpt.com/plugins/plugin_asdk_app_6aa661b9f69c81919d9108aae8f09364); for compatible clients, use remote MCP.
 
-[Русский](README.ru.md) · [Website](https://postlyra.app/en) · [Connection guide](https://postlyra.app/en/connect)
+[Русский](README.ru.md) · [Website](https://postlyra.app/en?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_en) · [Connection guide](https://postlyra.app/en/connect?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_en)
 
 Save Telegram drafts, schedule publications and manage your content from an AI client. Postlyra is a hosted service. This repository contains public integration instructions, client configurations and diagnostics; it does not contain the private SaaS backend. No bot token or locally installed server is required.
+
+**Recorded compatibility evidence for hosted MCP 0.3.5.** The endpoint exposes 32 tools. Desktop ChatGPT completed draft/card edits, browser source continuity, scheduling/moving/canceling, timed channel delivery and selected-message edit/delete with developer CSP enforcement enabled. The 804-test suite, typecheck/build and documentation checks passed. Group acceptance is blocked by a client safety review; remaining clients/devices are listed in [client evidence](docs/compatibility.md). See the [card guide](docs/chat-card.md). Registry version remains `0.2.0-rc.1`.
 
 ## Connect
 
@@ -14,7 +16,7 @@ Save Telegram drafts, schedule publications and manage your content from an AI c
 
 1. Open [Postlyra](https://postlyra.app/app) and sign in with Telegram.
 2. Add your channel or group under Connections and grant @PostlyraBot the necessary rights. You may save drafts before connecting a destination.
-3. Add the MCP URL in your AI client, follow its OAuth sign-in flow and review the requested permissions.
+3. In ChatGPT, install Postlyra from the plugin directory. In other compatible AI clients, add the MCP URL. Follow the OAuth sign-in flow and review the requested permissions.
 4. Ask the client to list your connected channels, then save a test draft. Configuration is complete only after authorization and a successful tool call.
 
 ### Claude Code
@@ -35,7 +37,7 @@ Merge [cursor.json](clients/cursor.json) into project `.cursor/mcp.json` or your
 
 ### ChatGPT
 
-Enable Developer mode under **Settings → Security and login**, then open **Plugins**, select the plus button and add the public MCP URL. Review the discovered tools and complete Postlyra authorization. Account and workspace policy can affect availability. This describes a custom developer connection, not an approved catalog listing. [Official OpenAI instructions](https://developers.openai.com/plugins/deploy/connect-chatgpt).
+In ChatGPT, [open Postlyra in the plugin directory](https://chatgpt.com/plugins/plugin_asdk_app_6aa661b9f69c81919d9108aae8f09364) and install it. Connect your Postlyra account through OAuth, sign in with Telegram and review the requested permissions. Ask for your connected channels, save a draft and review its preview. Then explicitly name the channel and authorize publishing; for scheduling, include a date, time and time zone. Availability depends on your account and workspace policy. The published plugin is the primary installation path; it does not require Developer mode.
 
 ### Claude
 
@@ -46,8 +48,8 @@ Open **Customize → Connectors → Add custom connector**, enter the public MCP
 - “Save this text as a Postlyra draft titled Weekly recap.”
 - “Find my draft about the autumn launch and show it.”
 - “Find my music post and show its Postlyra card.”
-- “Schedule this post in my connected channel for September 22, 2026 at 10:00 Europe/Moscow.”
-- “Move that publication to September 23 at the same local time.”
+- “Schedule this post in my connected channel for October 22, 2026 at 10:00 Europe/Moscow.”
+- “Move that publication to October 23 at the same local time.”
 - “Apply the current version only to the publication in my news channel.”
 - “Cancel this scheduled publication.”
 - “Show posts that need attention.”
@@ -72,7 +74,13 @@ This makes read-only checks of public metadata and unauthenticated MCP discovery
 
 ## Distribution status
 
-[server.json](server.json) is published as [io.github.prof-1t/postlyra-mcp, version 0.2.0-rc.1](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.prof-1t%2Fpostlyra-mcp/versions/0.2.0-rc.1). The official Registry API confirmed an active entry on September 11, 2026. The production endpoint also exposes the expanded tool metadata. Registry publication does not establish client compatibility or OpenAI catalog approval; no OpenAI submission is claimed. See the [release record](docs/release.md).
+[server.json](server.json) is published as [io.github.prof-1t/postlyra-mcp, version 0.2.0-rc.1](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.prof-1t%2Fpostlyra-mcp/versions/0.2.0-rc.1). The official Registry API confirmed an active entry on September 11, 2026. The production endpoint also exposes the expanded tool metadata. Postlyra is also [published in the ChatGPT plugin directory](https://chatgpt.com/plugins/plugin_asdk_app_6aa661b9f69c81919d9108aae8f09364). The MCP Registry and ChatGPT directory are separate distribution channels; a listing does not establish independent live validation of every AI client. See the [release record](docs/release.md).
+
+## Useful guides
+
+- Telegram MCP server: [English](https://postlyra.app/en/guides/telegram-mcp?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_en) · [Русский](https://postlyra.app/ru/guides/telegram-mcp?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_ru).
+- Publish to Telegram from Claude: [English](https://postlyra.app/en/guides/publish-from-claude?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_en) · [Русский](https://postlyra.app/ru/guides/publish-from-claude?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_ru).
+- Create editable tables in Telegram: [English](https://postlyra.app/en/guides/create-tables-in-telegram?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_en) · [Русский](https://postlyra.app/ru/guides/tablicy-v-telegram?utm_source=github&utm_medium=referral&utm_campaign=seo_guides_202609&utm_content=release_ru).
 
 ## Support
 
@@ -83,3 +91,4 @@ Never include access tokens, authorization codes, private previews or channel co
 ## Official client references
 
 [Claude Code MCP](https://code.claude.com/docs/en/mcp) · [MCP remote registry](https://modelcontextprotocol.io/registry/remote-servers) · [Codex MCP](https://developers.openai.com/codex/mcp) · [Cursor MCP](https://docs.cursor.com/context/model-context-protocol)
+

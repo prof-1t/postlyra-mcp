@@ -6,7 +6,9 @@
 
 Save Telegram drafts, schedule publications and manage your content from an AI client. Postlyra is a hosted service. This repository contains public integration instructions, client configurations and diagnostics; it does not contain the private SaaS backend. No bot token or locally installed server is required.
 
-**Recorded compatibility evidence for hosted MCP 0.3.5.** The endpoint exposes 32 tools. Desktop ChatGPT completed draft/card edits, browser source continuity, scheduling/moving/canceling, timed channel delivery and selected-message edit/delete with developer CSP enforcement enabled. The 804-test suite, typecheck/build and documentation checks passed. Group acceptance is blocked by a client safety review; remaining clients/devices are listed in [client evidence](docs/compatibility.md). See the [card guide](docs/chat-card.md). Registry version remains `0.2.0-rc.1`.
+**Current discovery, checked October 28, 2026:** the hosted endpoint reports MCP server version **0.3.6** and exposes **41 tools** through `tools/list`. This includes `get_postlyra_guide` and eight auto-signature tools for listing, reading, previewing, creating, updating, deleting, converting drafts and assigning signatures. Registry version remains `0.2.0-rc.1`; its version is separate from the hosted service. See the [release record](docs/release.md).
+
+**Historical compatibility evidence for hosted MCP 0.3.5.** Its discovery snapshot contained 32 tools. Desktop ChatGPT completed draft/card edits, browser source continuity, scheduling/moving/canceling, timed channel delivery and selected-message edit/delete with developer CSP enforcement enabled. The 804-test suite, typecheck/build and documentation checks passed. Group acceptance is blocked by a client safety review; remaining clients/devices are listed in [client evidence](docs/compatibility.md). See the [card guide](docs/chat-card.md). Registry version remains `0.2.0-rc.1`.
 
 ## Connect
 

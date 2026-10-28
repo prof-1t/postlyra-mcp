@@ -1,6 +1,12 @@
 # Release records
 
-The public integration repository is [prof-1t/postlyra-mcp](https://github.com/prof-1t/postlyra-mcp). The service remains a release candidate. The private SaaS backend is deployed; publishing metadata does not establish client compatibility.
+The public integration repository is [prof-1t/postlyra-mcp](https://github.com/prof-1t/postlyra-mcp). The private SaaS backend is deployed; publishing metadata does not establish client compatibility. The Registry manifest version and hosted server version are separate.
+
+## Hosted MCP 0.3.6: discovery checked October 28, 2026
+
+Read-only `initialize` and `tools/list` requests to `https://postlyra.app/mcp` returned server version `0.3.6` and 41 public tool definitions. The snapshot includes `get_postlyra_guide` and these eight auto-signature tools: `list_signatures`, `get_signature`, `preview_signature`, `create_signature`, `update_signature`, `delete_signature`, `convert_draft_to_signature` and `assign_signature`. These checks did not invoke tools, authenticate a user, modify content or publish messages; they do not establish new client compatibility or end-to-end signature acceptance.
+
+Postlyra is [published in the ChatGPT plugin directory](https://chatgpt.com/plugins/plugin_asdk_app_6aa661b9f69c81919d9108aae8f09364), as already documented in the README. The Registry manifest remains `0.2.0-rc.1`. No Registry release is made by this documentation update. Earlier release and acceptance records below describe their dated snapshots; use the [compatibility record](compatibility.md) for the scope of recorded client checks.
 
 ## Hosted MCP 0.3.0: optional card
 
@@ -43,7 +49,7 @@ The [published Registry entry](https://registry.modelcontextprotocol.io/v0.1/ser
 - Native/inline confirmation and recipient-accounting limits remain platform constraints, even though the observed controls reconciled. They are documented in [compatibility.md](compatibility.md).
 - A test group and Android/iOS acceptance remain pending. Telegram Desktop and the read-only worker observer verified the specified single-channel operations.
 - The [compatibility record](compatibility.md) distinguishes the bounded live result from untested clients and delivery methods.
-- No OpenAI app/plugin submission or catalog approval is claimed.
+- Postlyra is published in the ChatGPT plugin directory linked above. This listing does not establish acceptance of every current tool or workflow in every client.
 
 Public endpoint checks and Registry registration do not prove successful authorization or publication from an AI client. Update the compatibility record only with dated evidence, client version and the operations actually observed.
 

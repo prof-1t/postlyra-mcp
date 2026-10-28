@@ -2,6 +2,10 @@
 
 The public integration repository is [prof-1t/postlyra-mcp](https://github.com/prof-1t/postlyra-mcp). The private SaaS backend is deployed; publishing metadata does not establish client compatibility. The Registry manifest version and hosted server version are separate.
 
+## MCP metadata maintenance: verified October 29, 2026 (Asia/Bangkok)
+
+After deployment, public `tools/list` still exposed 41 tools. Root input parameters without descriptions decreased from 98 to zero, and the recursive input-description audit reported no findings. Repeated file-upload instructions were shortened while tool names, schema types, required fields, scopes and annotations were preserved. API and site checks returned HTTP 200. These checks validate metadata and service availability; they do not establish new end-to-end client acceptance. The Registry manifest remains `0.2.0-rc.1`.
+
 ## Hosted MCP 0.3.6: discovery checked October 28, 2026
 
 Read-only `initialize` and `tools/list` requests to `https://postlyra.app/mcp` returned server version `0.3.6` and 41 public tool definitions. The snapshot includes `get_postlyra_guide` and these eight auto-signature tools: `list_signatures`, `get_signature`, `preview_signature`, `create_signature`, `update_signature`, `delete_signature`, `convert_draft_to_signature` and `assign_signature`. These checks did not invoke tools, authenticate a user, modify content or publish messages; they do not establish new client compatibility or end-to-end signature acceptance.
